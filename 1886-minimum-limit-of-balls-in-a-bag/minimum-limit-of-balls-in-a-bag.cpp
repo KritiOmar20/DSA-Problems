@@ -14,7 +14,8 @@ public:
     }
 
     int minimumSize(vector<int>& nums, int maxOperations) {
-        int right = *max_element(nums.begin(), nums.end()); // Maximum value in array
+        // int right = *max_element(nums.begin(), nums.end()); // Maximum value in array
+        int right = INT_MAX;
         int left = 1, res = right;
 
         while (left <= right) {

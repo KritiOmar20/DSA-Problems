@@ -4,7 +4,7 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        //find pivot
+       //find pivot
        int pivot = -1;
        int n = nums.size();
        for(int i =n-2; i>=0; i--){

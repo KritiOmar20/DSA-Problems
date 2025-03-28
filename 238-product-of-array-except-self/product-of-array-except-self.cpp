@@ -6,19 +6,16 @@ public:
         int prod = 1;
         for (int i = 0; i < n; i++)
         {
-            if (nums[i] != 0)
-            {
+            if (nums[i] != 0){
                 prod *= nums[i];
             }
-            else
-            {
+            else{
                 count++;
             }
         }
         for (int i = 0; i < n; i++)
         {
-            if (count == 1)
-            {
+            if (count == 1){
                 if (nums[i] != 0){
                     nums[i] = 0;
                 }

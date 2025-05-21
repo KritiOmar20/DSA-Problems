@@ -14,8 +14,7 @@ public:
         int ans=0;
         ListNode* temp=head;
         while(temp!=NULL){
-            ans*=2;
-            ans+=(temp->val);
+            ans=(ans*2+temp->val);
             temp=temp->next;
         }
         return ans;

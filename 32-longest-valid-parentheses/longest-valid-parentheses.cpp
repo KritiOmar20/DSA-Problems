@@ -2,7 +2,6 @@ class Solution {
 public:
     int longestValidParentheses(string s) {
         int left = 0, right = 0, maxLen = 0;
-        // Left to Right Traversal
         for (int i = 0; i < s.length(); i++) {
             if (s[i] == '(') left++;
             else right++;

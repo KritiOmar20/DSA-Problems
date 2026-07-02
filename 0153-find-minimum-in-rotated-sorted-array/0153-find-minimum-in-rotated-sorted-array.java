@@ -4,7 +4,8 @@ class Solution {
         for(int x:nums){
             min=Math.min(min,x);
         }
-        return solve(nums,min);
+        return min;
+        //return solve(nums,min);
     }
     public static int solve(int nums[],int target){
         int left=0;

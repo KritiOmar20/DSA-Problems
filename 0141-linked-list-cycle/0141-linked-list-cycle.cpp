@@ -9,17 +9,11 @@
 class Solution {
 public:
     bool hasCycle(ListNode* head) {
-        if (head == NULL) {
-            return false;
-        }
-        map<ListNode*, bool> visited;
-        ListNode* temp = head;
-        while (temp != NULL) {
-            if (visited[temp] == true) {
-                return true;
-            }
-            visited[temp] = true;
-            temp = temp->next;
+        unordered_set<ListNode*>visited;
+        while(head){
+            if(visited.count(head)) return true;
+            visited.insert(head);
+            head = head->next;
         }
         return false;
     }

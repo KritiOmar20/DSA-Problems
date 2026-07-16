@@ -19,3 +19,4 @@ public:
         return nodes[nodes.size() / 2];
     }
 };
+//tc(o(n)) sc(o(n))

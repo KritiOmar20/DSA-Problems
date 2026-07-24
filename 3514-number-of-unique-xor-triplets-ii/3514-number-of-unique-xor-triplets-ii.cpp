@@ -1,31 +1,19 @@
 class Solution {
 public:
     int uniqueXorTriplets(vector<int>& nums) {
-        const int max_xor = 2048;
-
-        vector<bool> pair_xor(max_xor, false);
-        vector<bool> triplet_xor(max_xor, false);
-
-        int n = nums.size();
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                pair_xor[nums[i] ^ nums[j]] = true;
+        const int M=2048;
+        vector<vector<int>> dp(4,vector<int>(M));
+        dp[0][0]=1;
+        for(int t=0;t<3;t++){
+            for(int x=0;x<M;x++){
+                if(!dp[t][x]) continue;
+                for(int v:nums) dp[t+1][x^v]=1;
             }
         }
-
-        for (int x = 0; x < max_xor; x++) {
-            if (!pair_xor[x]) continue;
-            for (int v : nums) {
-                triplet_xor[x ^ v] = true;
-            }
+        int ans=0;
+        for(int x=0;x<M;x++){
+            if(dp[3][x]) ans++;
         }
-
-        int count = 0;
-        for(int i = 0; i < max_xor; i++){
-            if(triplet_xor[i]) count++;
-        }
-
-        return count;
+        return ans;
     }
 };

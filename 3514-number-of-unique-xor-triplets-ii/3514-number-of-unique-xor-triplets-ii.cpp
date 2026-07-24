@@ -1,19 +1,27 @@
 class Solution {
 public:
     int uniqueXorTriplets(vector<int>& nums) {
-        const int M=2048;
-        vector<vector<int>> dp(4,vector<int>(M));
-        dp[0][0]=1;
-        for(int t=0;t<3;t++){
-            for(int x=0;x<M;x++){
-                if(!dp[t][x]) continue;
-                for(int v:nums) dp[t+1][x^v]=1;
+        if(nums.size() ==1) return 1;
+        const int MAX = 2048;
+        vector<bool> one(MAX, false);
+        vector<bool> two(MAX, false);
+        vector<bool> three(MAX, false);
+        for(int val :nums){
+            for(int i=0; i<MAX; i++){
+                if(one[i]) two[i^val] = true;
+            }
+            one[val] = true;
+        }
+
+        for(int val :nums){
+            for(int i =0; i<MAX; i++){
+                if(two[i]) three[i^val] = true;
             }
         }
-        int ans=0;
-        for(int x=0;x<M;x++){
-            if(dp[3][x]) ans++;
-        }
+
+        int ans =0;
+        for(bool exists: three) ans += exists;
         return ans;
+
     }
 };

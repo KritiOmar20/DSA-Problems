@@ -1,15 +1,17 @@
 class Solution {
 public:
     int maxProduct(int n) {
-        int max1 = 0, max2 = 0;
-        for (; n; n /= 10) {
-            int d = n % 10;
-            if (d >= max1) {
-                max2 = max1;
-                max1 = d;
-            } else if (d > max2) 
-                max2 = d;
+        int mx1=-1,mx2=-1;
+        while(n>0){
+            int d=n%10;
+            n/=10;
+            if(d>=mx1){
+                mx2=mx1;
+                mx1=d;
+            }else if(d>mx2){
+                mx2=d;
+            }
         }
-        return max1 * max2;
+        return mx1*mx2;
     }
 };

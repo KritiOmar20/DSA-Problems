@@ -1,15 +1,14 @@
-#include <bits/stdc++.h>
 using namespace std;
+
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) {
-        int n = nums.size();
-        map<int, int> mpp;
-        for(int i =0; i<n;i++){
-            mpp[nums[i]]++;
-        }
-        for(auto it: mpp){
-            if(it.second > n/2) return it.first;
+    int majorityElement(vector<int>& arr) {
+        unordered_map<int, int> freq;
+        for (int num : arr) {
+            freq[num]++;
+            if (freq[num] > arr.size() / 2) {
+                return num;
+            }
         }
         return -1;
     }
